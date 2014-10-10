@@ -1,6 +1,6 @@
 # Florida
 
-TODO: Write a gem description
+**Florida** is `Sinatra` Based simple Web Application framework.
 
 ## Installation
 
@@ -24,7 +24,7 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/florida/fork )
+1. Fork it ( https://github.com/myun2ext/florida/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
