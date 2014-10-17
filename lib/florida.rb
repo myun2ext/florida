@@ -1,5 +1,4 @@
-require "florida/version"
+require 'florida/version'
+require 'florida/application'
 
-module Florida
-  # Your code goes here...
-end
+module Florida; end
