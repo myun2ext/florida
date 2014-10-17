@@ -3,7 +3,7 @@ require 'florida'
 
 class MyApplication < Florida::Application
   get '/' do
-    'Hello florida!'
+    'Hello Florida!!'
   end
 end
 
