@@ -6,10 +6,16 @@ require 'florida/sinatra_server/router'
 
 module Florida
   class SinatraServer
+    attr_reader :sinatra_app
+
     def initialize(app, params = {})
       @sinatra_app = Class.new(Sinatra::Base)
       @params = params
       setup(app)
+    end
+
+    def application
+      @sinatra_app
     end
 
     def run
