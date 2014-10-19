@@ -13,7 +13,7 @@ end
 
 class MyApplication < Florida::Application::Base
   routings do
-    path "/", to: HomeController
+    path "/home", to: HomeController
   end
 end
 

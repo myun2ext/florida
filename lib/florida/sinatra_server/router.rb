@@ -27,7 +27,7 @@ class Florida::SinatraServer::Router
 
     if controller.respond_to? :show
       @sinatra.get(self.class.show_routing_matcher(path)) do
-        klass.new(self).show(params[:captures].first)
+        controller_class.new(self).show(self.params[:captures].first)
       end
     end
   end
