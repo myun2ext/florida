@@ -1,42 +1,22 @@
+require 'florida/sinatra_server/controller_router'
+
 class Florida::SinatraServer::Router
+  def self.setup(app, sinatra)
+    self.new(app, sinatra).routing!
+  end
+
   def initialize(app, sinatra)
     @app = app
     @sinatra = sinatra
   end
 
-  def self.setup(app, sinatra)
-    self.new(app, sinatra).routing!
-  end
-
   def routing!
-    @app.routings.each do |path, data|
-      setup_routing(path, data)
+    routings.each do |path, params|
+      ctrl_router = Florida::SinatraServer::ControllerRouter.new(path, params[:to], params)
+      ctrl_router.routing!(@sinatra)
     end
   end
 
   private
-  def setup_routing(path, params)
-    controller_class = params[:to]
-    controller = controller_class.new
-
-    if controller.respond_to? :index
-      @sinatra.get self.class.index_routing_matcher(path) do
-        controller_class.new(self).index
-      end
-    end
-
-    if controller.respond_to? :show
-      @sinatra.get(self.class.show_routing_matcher(path)) do
-        controller_class.new(self).show(self.params[:captures].first)
-      end
-    end
-  end
-
-  def self.index_routing_matcher(path)
-    %r{\A#{path}(\.[\w]+)?/?\z}
-  end
-
-  def self.show_routing_matcher(path)
-    %r{\A#{path}/(\w+)(\.[\w]+)?/?\z}
-  end
+  def routings; @app.routings; end
 end
