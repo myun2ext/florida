@@ -25,13 +25,17 @@ write application ruby script.
 ```ruby
 require 'florida'
 
-class MyApplication < Florida::Application
-  get '/' do
+class HomeController < Florida::Controller::Base
+  def index
     'Hello Florida!!'
   end
 end
 
-MyApplication.run
+class MyApplication < Florida::Application::Base
+  routings do
+    path "/", to: HomeController
+  end
+end
 ```
 
 and script execute in ruby.
